@@ -11,6 +11,9 @@ class Book extends Model
 {
     use HasFactory;
 
+    public const PAGE = 1;
+    public const PER_PAGE = 2;
+
     protected $fillable = [
         'user_id',
         'title',
