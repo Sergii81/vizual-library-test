@@ -1,0 +1,256 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "library",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api/v1"
+        }
+    ],
+    "paths": {
+        "/books": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "Index",
+                "operationId": "28b9632495ac5f6f66b2e52001d510e6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookCollection"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "Create",
+                "operationId": "6e730867b01db8444e69a9164554019e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/{book_id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "Show",
+                "operationId": "d1589bbda0e71ccdfe2b3011bf78c42c",
+                "parameters": [
+                    {
+                        "name": "book_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "Update",
+                "operationId": "a385dae5863d64b5f06cdc734d90b35a",
+                "parameters": [
+                    {
+                        "name": "book_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/delete/{book_id}": {
+            "delete": {
+                "tags": [
+                    "books"
+                ],
+                "summary": "Delete",
+                "operationId": "c9b655531d6bfe29f0e54fbfa52884fd",
+                "parameters": [
+                    {
+                        "name": "book_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookCreateRequest": {
+                "title": "BookCreateRequest",
+                "description": "Book Create Request",
+                "required": [
+                    "title",
+                    "authors"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Description",
+                        "nullable": true
+                    },
+                    "authors": {
+                        "type": "integer",
+                        "example": [
+                            1,
+                            2
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "BookUpdateRequest": {
+                "title": "BookUpdateRequest",
+                "description": "Book Update Request",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Description",
+                        "nullable": true
+                    },
+                    "authors": {
+                        "type": "integer",
+                        "example": [
+                            1,
+                            2
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "BookCollection": {
+                "title": "BookCollection",
+                "description": "Book resource collection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BookResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "BookResource": {
+                "title": "BookResource",
+                "description": "Book resource",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Title 1"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Description 1"
+                    },
+                    "publisher": {
+                        "type": "string",
+                        "example": "Publisher 1"
+                    },
+                    "authors": {
+                        "example": [
+                            "Author 1",
+                            "Author 2"
+                        ]
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "books",
+            "description": "Books"
+        }
+    ]
+}
