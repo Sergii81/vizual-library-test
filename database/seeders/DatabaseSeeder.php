@@ -16,43 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
 
-        $publisherOne = User::create([
-            'name' => 'Publisher 1',
-            'email' => 'pablisher1@example.com',
-            'password' => Hash::make('password')
-        ]);
-        $publisherTwo =User::create([
-            'name' => 'Publisher 2',
-            'email' => 'pablisher2@example.com',
-            'password' => Hash::make('password')
-        ]);
-        $authorOne = Author::create([
-            'name' => 'Author 1'
-        ]);
-        $authorTwo = Author::create([
-            'name' => 'Author 2'
-        ]);
-        $bookOne = Book::create([
-            'title' => 'Title 1',
-            'description' => 'Description',
-            'user_id' => $publisherOne->id,
-        ]);
-        $bookTwo = Book::create([
-            'title' => 'Title 2',
-            'description' => 'Description',
-            'user_id' => $publisherTwo->id,
-        ]);
-        $bookTree = Book::create([
-            'title' => 'Title 3',
-            'description' => 'Description',
-            'user_id' => $publisherOne->id,
-        ]);
-
-        $bookOne->authors()->attach($authorOne->id);
-        $bookTwo->authors()->attach($authorTwo->id);
-        $bookTree->authors()->attach($authorOne->id);
-        $bookTree->authors()->attach($authorTwo->id);
+        Book::factory()
+            ->has(Author::factory()->count(3))
+            ->count(3)
+            ->for($user1)
+            ->create();
+        Book::factory()
+            ->has(Author::factory()->count(3))
+            ->count(3)
+            ->for($user2)
+            ->create();
     }
 }

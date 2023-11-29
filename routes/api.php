@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\BookController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\Auth\LoginController;
+use App\Http\Controllers\Api\V1\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Book\CreateBookAction;
 use App\Actions\Book\DeleteBookAction;
@@ -9,6 +9,7 @@ use App\Actions\Book\GetBookAction;
 use App\Actions\Book\UpdateBookAction;
 use App\Dto\CreateBookDto;
 use App\Dto\UpdateBookDto;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookDeleteRequest;
 use App\Http\Requests\BookShowRequest;
