@@ -16,8 +16,16 @@
     - DB_PASSWORD=db_password
 - php artisan migrate
 - php artisan db:seed
-- for local installation
+- php artisan optimize
+-  php artisan config:clear
+-  php artisan cache:clear
 
+
+- npm install
+- npm run dev
+
+
+- for local installation
   - php artisan serv
   - api url http://127.0.0.1:8000/api/v1/
   - api documentation url http://127.0.0.1:8000/api/documentation

@@ -22,6 +22,10 @@ class HomeController extends Controller
         $perPage = ! empty($request->perPage) ? $request->perPage : Book::PER_PAGE;
 
         $books = $action->execute($page, $perPage);
+        if($request->ajax()) {
+
+            return view('book', ['books' => $books]);
+        }
 
         return view('index', ['books' => $books]);
     }

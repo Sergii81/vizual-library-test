@@ -12,7 +12,7 @@ class Book extends Model
     use HasFactory;
 
     public const PAGE = 1;
-    public const PER_PAGE = 2;
+    public const PER_PAGE = 3;
 
     protected $fillable = [
         'user_id',
